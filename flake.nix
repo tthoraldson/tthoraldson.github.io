@@ -18,7 +18,8 @@
           # package = inputs.emanote.packages.${system}.default;
           sites."default" = {
             layers = [ ./. ];
-            layersString = [ "/" ];
+            layersString = [ "./" ];
+            baseUrl = "/";
             # port = 8080;
             prettyUrls = true;
           };
