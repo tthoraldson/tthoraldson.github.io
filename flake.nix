@@ -17,11 +17,11 @@
           # By default, the 'emanote' flake input is used.
           # package = inputs.emanote.packages.${system}.default;
           sites."default" = {
-            layers = [ ./content ];
-            layersString = [ "./content" ];
+            layers = [ ./. ];
+            layersString = [ "./" ];
+            baseUrl = "/";
             # port = 8080;
-            baseUrl = "/"; # Change to "/" (or remove it entirely) if using CNAME
-            # prettyUrls = true;
+            prettyUrls = true;
           };
         };
         devShells.default = pkgs.mkShell {
