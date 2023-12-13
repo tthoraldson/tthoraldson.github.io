@@ -5,7 +5,7 @@ page:
   siteTitle: Theresa Thoraldson's Blog
 
 template:
-  theme: blue
+  theme: black
 
   # You can add your own variables here, like editBaseUrl.
   # See after-note.tpl to see where editBaseUrl gets used.
