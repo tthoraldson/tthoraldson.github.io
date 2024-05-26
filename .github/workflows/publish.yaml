@@ -1,29 +1,23 @@
-name: "Publish"
+name: "Build and maybe publish site"
 on:
-  # Run only when pushing to master branch
   push:
     branches:
       - master
+  pull_request:
 jobs:
-  emanote:
+  ema:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v17
-        with:
-          extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-            trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-            substituters = https://cache.garnix.io https://cache.nixos.org/
-      - name: Remove README.md
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Build sources & site 🔧
         run: |
-          rm -rf README.md
-      - name: Build the website (Nix) 🔧
-        run: |
-          nix build -j 4
+          nix build .#site-github -j 4
       - name: Deploy to gh-pages 🚀
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./result/
+          publish_dir: result
           cname: blog.theresa.ai
