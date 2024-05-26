@@ -1,6 +1,6 @@
 <footer class="flex items-center justify-center mt-2 mb-8 space-x-4 text-center text-gray-800">
     <div>
-        Last Compiled on [[#Cool]]
+        Last Compiled on [[Hello World]]
     </div>
     <bind tag="iconClass">w-6 h-6 hover:text-${theme}-700</bind>
     <div>
@@ -31,7 +31,7 @@
         </svg>
       </a>
     </div>
-    <div>
+    <!-- <div>
       <a href="${ema:taskIndexUrl}" title="View tasks">
         <svg xmlns="http://www.w3.org/2000/svg" class="${iconClass}" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
@@ -39,5 +39,5 @@
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       </a>
-    </div>
+    </div> -->
   </footer>
